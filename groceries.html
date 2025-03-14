@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlipZone-Groceries</title>
+    <style>
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            gap: 20px;
+            padding: 20px;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .product img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .quantity {
+            width: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><img src="logo.png" alt="Flipzon Logo" width="150">Groceries</h1>
+        <a href="flipzon.html">Home</a>
+        <a href="cart.html">Cart</a>
+    </header>
+
+    <div class="product-container">
+        <div class="product">
+            <img src="olive.jpg" alt="olive">
+            <h3>Olive oil</h3>
+            <p>$29</p>
+            <input type="number" class="quantity" min="1" value="1">
+            <button class="add-to-cart" data-name="olive-oil" data-price="29">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="heinz.jpg" alt="heinz">
+            <h3>Tomato Sauce</h3>
+            <p>$8</p>
+            <input type="number" class="quantity" min="1" value="1">
+            <button class="add-to-cart" data-name="Tomatosauce" data-price="8">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="garlic.jpg" alt="garlic">
+            <h3>Garlic Bread</h3>
+            <p>$9</p>
+            <input type="number" class="number" min="1" value="1">
+            <button class="add-to-cart" data-name="garlic bread" data-price="9">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="cookies.jpg" alt="cookies">
+            <h3>Cookies</h3>
+            <p>$19</p>
+            <input type="number" class="quantity" min="1" value="1">
+            <button class="add-to-cart" data-name="cookies" data-price="19">Add to Cart</button>
+        </div>
+        <div class="product">
+            <img src="lindt.jpg" alt="lindt">
+            <h3>Chocolate</h3>
+            <p>$21</p>
+            <input type="number" class="quantity" min="1" value="1">
+            <button class="add-to-cart" data-name="chocolate" data-price="21">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- Load cart.js AFTER all elements are loaded -->
+    <script src="cart.js"></script>
+</body>
+</html>

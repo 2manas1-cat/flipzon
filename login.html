@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Flipzon</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: #0000008d;
+            color: white;
+            padding: 130px;
+        }
+        .login-container {
+            background: #13768f;
+            padding: 50px;
+            border-radius: 30px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        .login-container img {
+            width: 150px; /* Adjust logo size */
+            display: block;
+            margin: 0 auto 10px; /* Center and add spacing */
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background: rgb(229, 255, 28);
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #b638ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="logo.png" alt="Flipzon Logo">
+        <h2>Login to Flipzon</h2>
+        <input type="text" id="username" placeholder="Enter Username">
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <script>
+        function login() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            const mp = new Map();
+            mp.set("manas","1111");
+            mp.set("admin","1234");
+            if(mp.has(username)){
+                if(mp.get(username)==password){
+              { // Simple authentication check
+                localStorage.setItem("isLoggedIn", "true");
+                window.location.href = "flipzon.html"; // Redirect to main page
+            }
+        }
+        else{
+            alert("Invalid credentials! Try again.");
+        } 
+        }
+        else{
+            alert("Invalid credentials! Try again.");
+        }
+
+        // Check if already logged in
+        if (localStorage.getItem("isLoggedIn") === "true") {
+            window.location.href = "flipzon.html";
+        }}
+    </script>
+</body>
+</html>

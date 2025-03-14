@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipzon - Payment</title>
+    <img src="logo.png" alt="Flipzon Logo" width="150">
+</head>
+<body>
+
+    <header>
+        <a href="flipzon.html">Home</a>
+    </header>
+
+    <h2>Payment Details</h2>
+
+    <form id="payment-form">
+        <label for="name">Name on Card:</label>
+        <input type="text" id="name" required>
+
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" maxlength="16" required>
+
+        <label for="expiry">Expiry Date:</label>
+        <input type="month" id="expiry" required>
+
+        <label for="cvv">CVV:</label>
+        <input type="password" id="cvv" maxlength="3" required>
+
+        <h3>Or Pay via UPI</h3>
+        <label for="upi">UPI ID:</label>
+        <input type="text" id="upi">
+
+        <button type="submit">Pay Now</button>
+    </form>
+
+    <script>
+        document.getElementById("payment-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            alert("Payment Successful! Thank you for shopping.");
+            localStorage.removeItem("cart"); // Clear cart after payment
+            window.location.href = "yourorder.html"; // Redirect to home
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipzon - Cart</title>
+    <img src="logo.png" alt="Flipzon Logo" width="150">
+    <style>
+        a:link{
+            color:yellow;
+        }
+        a:hover{
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="flipzon.html">Home</a>
+    </header>
+
+    <h2>Your Cart</h2>
+    <div id="cart-items">
+        <p>Cart is empty</p>
+    </div>
+
+    <div>
+        <a href="payment.html">Towards Payment</a>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let cart = JSON.parse(localStorage.getItem("cart")) || {};
+            let cartContainer = document.getElementById("cart-items");
+    
+            if (Object.keys(cart).length === 0) {
+                cartContainer.innerHTML = "<p>Cart is empty</p>";
+                return;
+            }
+    
+            cartContainer.innerHTML = "<ul></ul>";
+            let total = 0;
+    
+            for (let product in cart) {
+                let itemTotal = cart[product].price * cart[product].quantity;
+                total += itemTotal;
+    
+                let li = document.createElement("li");
+                li.innerHTML = `${product} - ${cart[product].quantity} x $${cart[product].price} = $${itemTotal} 
+                    <button onclick="removeFromCart('${product}')">Remove</button>`;
+                cartContainer.querySelector("ul").appendChild(li);
+            }
+    
+            let totalDiv = document.createElement("div");
+            totalDiv.innerHTML = `<h3>Total: $${total}</h3>`;
+            cartContainer.appendChild(totalDiv);
+        });
+    
+        function removeFromCart(product) {
+            let cart = JSON.parse(localStorage.getItem("cart"));
+    
+            if (cart[product]) {
+                delete cart[product];
+                localStorage.setItem("cart", JSON.stringify(cart));
+                location.reload(); // Refresh to update cart display
+            }
+        }
+    </script>
+
+
+</body>
+</html>

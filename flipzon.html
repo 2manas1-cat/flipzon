@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipzon - Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 25;
+            background: #c6c0c08d;
+            text-align: center;
+        }
+        header {
+            background: #13768f;
+            color: white;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        header img {
+            width: 140px;
+        }
+        #search-box {
+            padding: 8px;
+            width: 200px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+        .search-container button {
+            background: rgb(18, 19, 11);
+            border: none;
+            border-radius: 50%;
+            padding: 8px;
+            cursor: pointer;
+            margin-left: 5px;
+            transition: 0.3s;
+        }
+        .search-container button:hover {
+            background: #000000;
+        }
+        nav a {
+            color: rgb(36, 218, 191);
+            text-decoration: none;
+            margin: 0 10px; 
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #a1216a;
+        }
+        .category-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    gap: 20px; /* Reduce gaps */
+    padding: 40px; /* Make overall area larger */
+    max-width: 950px; /* Resrict max width for balanced look */
+    margin: auto; /* Center the grid */
+}
+
+.category {
+    background: rgb(0, 0, 0);
+    padding: 10px; /* Increase padding */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: 1s;
+    width: 80%;
+    text-align: center;
+}
+
+.category:hover {
+    transform: translateY(-30px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category img {
+    width: 100%; /* Ensure image fits container */
+    height: 200px; /* Adjust height for uniformity */
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+
+        .category p {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
+    padding: 10px;
+    background: #13768f;
+    color: white;
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    text-align: right;
+}
+
+footer h1 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+footer div {
+    margin-bottom: 5px;
+}
+
+footer button img {
+    width: 20px;
+    height: 20px;
+    margin: 3px;
+    border-radius: 50%;
+}
+
+    </style>
+    <script>
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.href = "login.html"; // Redirect if not logged in
+        }
+     //   <script>
+    function logout() {
+        localStorage.removeItem("isLoggedIn");
+        window.location.href = "login.html"; // Redirect to login page
+    }
+    </script>
+    
+
+</head>
+<body>
+
+    <header>
+        <img src="logo.png" alt="Flipzon Logo">
+        <div class="search-container">
+            <input type="text" id="search-box" placeholder="Search...">
+            <button onclick="searchCategory()">🔍</button>
+        </div>
+        <nav>
+            <a href="yourorder.html">Your Orders</a>
+            <a href="cart.html">Cart</a>
+            <button onclick="logout()" style="background: white; color: black; padding: 5px 10px; border: none; border-radius: 5px; cursor: pointer;">Logout</button>
+        </nav>
+    </header>
+    
+
+    <h2>Product Categories</h2>
+
+    <div class="category-container">
+        <div class="category">
+            <button onclick="location.href='electronics.html'">
+                <img src="ele.jpg" alt="Electronics">
+            </button>
+            <p>Electronics</p>
+        </div>
+        <div class="category">
+            <button onclick="location.href='groceries.html'">
+                <img src="groceries.jpg" alt="Groceries">
+            </button>
+            <p>Groceries</p>
+        </div>
+        <div class="category">
+            <button onclick="location.href='beauty.html'">
+                <img src="beauty.jpg" alt="Beauty">
+            </button>
+            <p>Beauty</p>
+        </div>
+        <div class="category">
+            <button onclick="location.href='apparels.html'">
+                <img src="apparels.jpg" alt="Apparels">
+            </button>
+            <p>Apparels</p>
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            <h1>Contact Us</h1>
+            Address: BMSIT&M 
+            Contact: +91XXXXXXXXX
+            email: i16@bmsit.in
+        </div>
+
+       
+
+        <div>
+            <h1>Socials</h1>
+            <button onclick="window.location.href='https://x.com/elonmusk'">
+                <img src="twitter.png" alt="Twitter">
+            </button>
+            <button onclick="window.location.href='https://www.linkedin.com/in/2manas1/'">
+                <img src="linkedin.png" alt="LinkedIn">
+            </button>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("search-box").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                searchCategory();
+            }
+        });
+
+        function searchCategory() {
+            let searchValue = document.getElementById("search-box").value.toLowerCase();
+            let categories = {
+                "electronics": "electronics.html",
+                "groceries": "groceries.html",
+                "beauty": "beauty.html",
+                "apparels": "apparels.html"
+            };
+
+            if (categories[searchValue]) {
+                window.location.href = categories[searchValue];
+            } else {
+                alert("No results found");
+            }
+        }
+    </script>
+
+</body>
+</html> 
